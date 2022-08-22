@@ -21,6 +21,10 @@ const computedAttributes = computed(() => Object.fromEntries(Object.entries(atti
 	return [key, rest[key]]
 })))
 
+useHead({
+	title: name,
+})
+
 const cartProduct = reactive({
 	id: response[0].id,
 	variant: prices[0].variants[0].weight,

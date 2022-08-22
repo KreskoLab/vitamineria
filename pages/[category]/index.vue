@@ -13,8 +13,11 @@ const client = useStrapiClient()
 const route = useRoute()
 
 const param = route.params.category as string
-
 const category = await client<CategoryResponse>(`categories?filters[slug][$eq]=${param}&populate[products][populate]=*`)
+
+useHead({
+	title: category.data[0].attributes.name,
+})
 </script>
 
 <template>
