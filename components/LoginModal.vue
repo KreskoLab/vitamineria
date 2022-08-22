@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const show = ref<boolean>(false)
-
-const route = useRoute()
-
 const emit = defineEmits<{
 	(event: 'close'): void
 }>()
+
+const show = ref<boolean>(false)
+const route = useRoute()
+const config = useRuntimeConfig()
 
 function close() {
 	emit('close')
@@ -13,7 +13,7 @@ function close() {
 
 function auth(provider: string) {
 	localStorage.setItem('redirect', route.path)
-	window.location.href = `http://localhost:1337/api/connect/${provider}`
+	window.location.href = `${config.strapi.url}/api/connect/${provider}`
 }
 
 onMounted(() => (show.value = true))
@@ -22,7 +22,7 @@ onMounted(() => (show.value = true))
 <template>
 	<Teleport to="body">
 		<div
-			class="flex justify-center items-center fixed top-0 left-0 h-full w-full bg-dark-600/60 transition-all duration-150 ease-in-out"
+			class="flex justify-center items-center fixed top-0 left-0 h-full w-full bg-dark-600/60 transition-all duration-150 ease-in-out z-99"
 		>
 			<Transition
 				enter-active-class="animate-animated animate-faster animate-fadeInUp"
@@ -31,7 +31,7 @@ onMounted(() => (show.value = true))
 			>
 				<dialog
 					v-if="show"
-					class="w-[420px] h-[380px] bg-gradient-19 p-4"
+					class="w-[90%] h-[320px] md:w-[60%] lg:(w-[420px] h-[380px]) bg-gradient-19 p-4"
 					open
 				>
 					<div
