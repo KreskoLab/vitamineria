@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 	css: ['@/assets/main.css'],
 
 	strapi: {
-		url: 'https://admin.vitamineria.com.ua'
+		url: process.env.STRAPI_URL || 'http://localhost:1337'
 	},
 
 	vite: {
