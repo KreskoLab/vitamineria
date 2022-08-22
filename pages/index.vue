@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const router = useRouter()
-onMounted(() => router.push('/pastila'))
+onBeforeMount(() => router.push('/pastila'))
 </script>
 
 <template>
