@@ -1,0 +1,38 @@
+{
+	"name": "nuxt",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"format": "prettier .  --write",
+		"lint": "eslint --ext .ts,.js,.vue ."
+	},
+	"devDependencies": {
+		"@iconify-json/tabler": "^1.1.21",
+		"@nuxtjs/eslint-config": "^10.0.0",
+		"@nuxtjs/eslint-config-typescript": "^10.0.0",
+		"@nuxtjs/strapi": "^1.5.0",
+		"@vueuse/core": "^9.1.0",
+		"@vueuse/nuxt": "^9.1.0",
+		"@windicss/plugin-animations": "^1.0.9",
+		"@windicss/plugin-scrollbar": "^1.2.3",
+		"eslint": "^8.13.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-vue": "^8.6.0",
+		"marked": "^4.0.18",
+		"nuxt": "3.0.0-rc.8",
+		"nuxt-windicss": "^2.5.0",
+		"prettier": "^2.7.1",
+		"qs": "^6.11.0",
+		"typescript": "^4.7.4",
+		"unplugin-icons": "^0.14.7",
+		"unplugin-vue-components": "^0.21.1"
+	},
+	"dependencies": {
+		"@nuxt/kit": "^3.0.0-rc.8"
+	}
+}
