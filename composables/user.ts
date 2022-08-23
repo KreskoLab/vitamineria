@@ -1,7 +1,7 @@
 import { Ref } from 'vue'
 import type { User } from '~/types'
 
-export const useUser = () => useState<User>('user')
+export const useUser = () => useState<User>('user', () => ({}))
 
 export const useFetchUser = async () => {
 	const user = useState('user', () => ({}) as Ref<User>)

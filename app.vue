@@ -2,7 +2,7 @@
 const cart = useCart()
 const login = useLogin()
 
-await Promise.all([useFetchUser(), fetchCartProducts()])
+await fetchCartProducts()
 </script>
 
 <template>
