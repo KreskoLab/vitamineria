@@ -75,28 +75,30 @@ export const fetchCartProducts = async () => {
 		encodeValuesOnly: true,
 	});
 
-	const { data: response } = await client<ProductResponse>(`products?${query}&populate=*`)
+	if (products.value.length) {
+		const { data: response } = await client<ProductResponse>(`products?${query}&populate=*`)
 
-	cartProducts.value = []
+		cartProducts.value = []
 
-	products.value.forEach(item => {
-		const { attributes } = JSON.parse(JSON.stringify(response.find(product => product.id === item.id))) as  Strapi4ResponseData<Product>
-		const price = attributes.prices[0].variants.find(variant => variant.weight === item.weight).price
+		products.value.forEach(item => {
+			const { attributes } = JSON.parse(JSON.stringify(response.find(product => product.id === item.id))) as  Strapi4ResponseData<Product>
+			const price = attributes.prices[0].variants.find(variant => variant.weight === item.weight).price
 
-		attributes.count = item.count
-		attributes.name = `${attributes.name} (${item.weight})`  
+			attributes.count = item.count
+			attributes.name = `${attributes.name} (${item.weight})`  
 
-		attributes.prices[0].variants = [
-			{
-				price,
-				weight: item.weight
-			}
-		]
+			attributes.prices[0].variants = [
+				{
+					price,
+					weight: item.weight
+				}
+			]
 
-		const productVariants = cartProducts.value.find(product => item.id === product.id && product.prices[0].variants[0].weight === item.weight)
+			const productVariants = cartProducts.value.find(product => item.id === product.id && product.prices[0].variants[0].weight === item.weight)
 
-		if (productVariants) {
-			productVariants.count++
-		} else cartProducts.value.push({...attributes, id: item.id})
-	})  
+			if (productVariants) {
+				productVariants.count++
+			} else cartProducts.value.push({...attributes, id: item.id})
+		})  
+	}
 }
