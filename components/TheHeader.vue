@@ -11,7 +11,6 @@
 				</NuxtLink>
 
 				<div class="flex items-center space-x-4 ml-auto">
-					<UserNav />
 					<CartIcon />
 				</div>
 			</div>
@@ -44,7 +43,6 @@
 			</nav>
 
 			<div class="flex justify-end items-center space-x-12 w-[30%] h-full">
-				<UserNav />
 				<CartIcon />
 			</div>
 		</section>

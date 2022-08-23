@@ -75,10 +75,10 @@ export const fetchCartProducts = async () => {
 		encodeValuesOnly: true,
 	});
 
+	cartProducts.value = []
+
 	if (products.value.length) {
 		const { data: response } = await client<ProductResponse>(`products?${query}&populate=*`)
-
-		cartProducts.value = []
 
 		products.value.forEach(item => {
 			const { attributes } = JSON.parse(JSON.stringify(response.find(product => product.id === item.id))) as  Strapi4ResponseData<Product>
