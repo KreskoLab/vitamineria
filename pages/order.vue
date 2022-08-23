@@ -2,12 +2,24 @@
 const client = useStrapiClient()
 const route = useRoute()
 
-const orderId = route.query['orderId'] || ''
+const orderId = route.query['id']
 
-let res = ref<'success' | 'error'>('error');
+let res = ref<'success' | 'error' | 'pending'>('error');
 
 onMounted(async () => {
-	res.value = await client<'success' | 'error'>(`/me/order?orderId=${orderId}`, { method: 'GET' })
+	try {
+		res.value = await client<'success' | 'error' | 'pending'>(`/me/order?id=${orderId}`, { method: 'GET' })
+	} catch (error) {
+		console.log(error);
+	}
+
+	if (res.value === 'success' || res.value === 'pending') {
+		await clearCart()
+	} else {
+		await new Promise((resolve) => {
+			setTimeout(() => resolve(navigateTo('/pastila')), 5000)
+		})
+	}
 })
 </script>
 
@@ -20,12 +32,20 @@ onMounted(async () => {
 				Дякуємо! Замовлення прийнято
 			</template>
 
-			<template v-else>
+			<template v-if="res === 'pending'">
+				Замовлення оброблюється
+			</template>
+
+			<template v-if="res === 'error'">
 				Під час оплати винкила помилка
 			</template>
 		</h1>
 
-		<p v-if="res === 'success'" class="text-center text-xl">
+		<p v-if="res === 'success' || res === 'pending'" class="text-2xl text-center md:text-3xl font-medium">
+			На вашу пошту відправлено письмо
+		</p>
+
+		<p v-if="res === 'success' || res === 'pending'" class="text-center text-2xl mt-4">
 			Номер замовлення: {{ orderId }}
 		</p>
 	</div>

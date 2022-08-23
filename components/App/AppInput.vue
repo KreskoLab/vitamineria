@@ -25,7 +25,7 @@ const handleInput = () => {
 	<div class="relative w-full">
 		<label
 			v-if="label"
-			class="absolute -top-7 left-0 text-lg"
+			class="absolute -top-8 left-0 text-lg"
 		>
 			{{ label }}
 		</label>
@@ -50,6 +50,6 @@ input {
   w-full
   border-2 border-gray-600 
   py-2 px-3 
-  focus:outline-none
+  focus:(outline-none ring-0 ring-transparent border-gray-600)
 }
 </style>

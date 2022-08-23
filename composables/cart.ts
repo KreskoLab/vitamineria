@@ -59,6 +59,15 @@ export const saveCart = () => {
 	cart.value = productsToSave
 }
 
+export const clearCart = async () => {
+	const cart = cartCookie()
+	cart.value = []
+    
+	await new Promise((resolve) => {
+		setTimeout(() => resolve(fetchCartProducts()), 100)
+	})
+}
+
 export const fetchCartProducts = async () => {
 	const products = cartCookie();
 	const cartProducts = useCartProducts();  

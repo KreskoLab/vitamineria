@@ -5,6 +5,7 @@ export default {
 	plugins: [
 		require('@windicss/plugin-scrollbar'),
 		require('windicss/plugin/scroll-snap'),
+		require('windicss/plugin/forms'),
 		require('@windicss/plugin-animations')({
 			settings: {
 				animatedSpeed: 1000,
