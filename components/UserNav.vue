@@ -12,25 +12,33 @@ const displayName = computed(() => {
 
 <template>
 	<div class="flex items-center justify-center h-full">
-		<AppDropdown v-if="user.email" >
-			<span class="text-lg h-full px-4">
-				{{ displayName }}
-			</span>
+		<div v-if="user.email">
+			<AppDropdown class="hidden md:block">
+				<span class="text-lg h-full px-4">
+					{{ displayName }}
+				</span>
 
-			<template #menu>
-				<AppDropdownItem>
-					<NuxtLink class="block w-full" to="/account">
-						Аккаунт
-					</NuxtLink>
-				</AppDropdownItem>
+				<template #menu>
+					<AppDropdownItem>
+						<NuxtLink class="block w-full" to="/account">
+							Аккаунт
+						</NuxtLink>
+					</AppDropdownItem>
 
-				<AppDropdownItem 
-					@click="logout"
-				>
-					Вийти
-				</AppDropdownItem>
-			</template>
-		</AppDropdown>
+					<AppDropdownItem 
+						@click="logout"
+					>
+						Вийти
+					</AppDropdownItem>
+				</template>
+			</AppDropdown>
+
+			<NuxtLink class="block md:hidden overflow-x-hidden max-w-24" to="/account">
+				<span class="w-full text-sm truncate">
+					{{ displayName }}
+				</span>
+			</NuxtLink>
+		</div>
 
 		<IconTablerUser
 			v-else

@@ -1,5 +1,3 @@
-import { Product } from "./product"
-
 export type User = {
 	id: number
 	username: string
@@ -19,5 +17,4 @@ export type User = {
 		price: number,
 		variant: string
 	}[]
-	favorites: Product[]
 }

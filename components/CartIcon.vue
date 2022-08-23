@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const user = await useUser()
 const cart = useCart()
+const cartProducts = useCartProducts()
 
-const products = computed(() => user.value.cart?.length || 0)
+const products = computed(() => cartProducts.value.length)
 const newProduct = ref(false)
 
 watch(() => products.value, () => {  

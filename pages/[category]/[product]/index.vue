@@ -55,22 +55,8 @@ const smiles = [
 	}
 ]
 
-async function addToCart() {
-	if (user.value.email) {
-		const payload = user.value.cart || []
-		const product = payload.find(item => item.id === cartProduct.id && item.price === cartProduct.price)
-		const productEquel = product && (product.variant === cartProduct.variant && product.price === cartProduct.price)
-
-		if (productEquel) product.count++
-		else payload.push({ count: 1, ...cartProduct })
-
-		try {
-			await client('/me', { method: 'PUT', body: { ['cart']: payload } })
-			useFetchUser()
-		} catch (error) {
-			console.log(error);
-		}
-	} else login.value = true
+async function add() {
+	await addToCart({ id: response[0].id, weight: cartProduct.variant, count: 1 })
 }
 
 function selectVariant(variant: Variant) {
@@ -117,7 +103,7 @@ function selectVariant(variant: Variant) {
 
 				<button 
 					class="appearance-none bg-[#1D7F75] py-5 flex-grow font-semibold text-xl text-[#FCF7F1] border-t-2 lg:(border-r-2 border-t-2) border-gray-600" 
-					@click="addToCart()"
+					@click="add()"
 				>
 					В кошик
 				</button>
@@ -199,6 +185,4 @@ function selectVariant(variant: Variant) {
 td {
   padding: 5px 0;
 }
-
-
 </style>

@@ -2,11 +2,11 @@
 const cart = useCart()
 const login = useLogin()
 
-await useFetchUser()
+await Promise.all([useFetchUser(), fetchCartProducts()])
 </script>
 
 <template>
-	<div class="min-h-screen bg-stone-100">
+	<div class="min-h-screen bg-stone-100 min-w-[360px]">
 		<TheHeader />
 
 		<TheCart 
@@ -19,10 +19,10 @@ await useFetchUser()
 			@close="login = false"
 		/>
 
+		<NuxtLoadingIndicator />
+
 		<main class="container mx-auto max-w-screen-2xl overflow-x-hidden pt-20 lg:pt-22">
-			<NuxtLayout>
-				<NuxtPage />
-			</NuxtLayout>
+			<NuxtPage />
 		</main>
 	</div>
 </template>

@@ -4,13 +4,14 @@
 			<div class="flex items-center">
 				<NuxtLink class="flex items-center justify-center" to="/" >
 					<img
-						class="w-40"
+						class="w-42"
 						src="@/assets/appy3.svg"
 						alt="logo"
 					/>
 				</NuxtLink>
 
-				<div class="ml-auto">
+				<div class="flex items-center space-x-4 ml-auto">
+					<UserNav />
 					<CartIcon />
 				</div>
 			</div>
