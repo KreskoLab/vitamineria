@@ -181,9 +181,9 @@ async function validate() {
 				</div>
 			</section>
 
-			<div class="border-t-2 border-gray-600 h-[15%]">
+			<div v-if="cartFull" class="border-t-2 border-gray-600 h-[15%]">
 				<section 
-					v-if="cartFull && tab === 'cart'"
+					v-if="tab === 'cart'"
 					class="flex flex-col justify-between px-4 pt-3 h-full"
 				>
 					<div class="flex justify-between items-center text-xl font-semibold uppercase">
@@ -200,7 +200,7 @@ async function validate() {
 				</section>
 
 				<section 
-					v-if="cartFull && tab === 'adress'"
+					v-else
 					class="flex flex-col justify-between px-4 pt-3 h-full"
 				>
 					<button
