@@ -1,25 +1,39 @@
 <script setup lang="ts">
 import type { Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types/v4'
-import type { Category, Subcategory } from '~/types'
+import type { Category } from '~/types'
+import qs from 'qs'
 
 interface CategoriesResponse {
-	data: Strapi4ResponseData<
-	Category & { subcategories: { data: Strapi4ResponseData<Subcategory>[] } }
-	>[]
+	data: Strapi4ResponseData<Category>[]
 }
 
 const route = useRoute()
-const { find } = useStrapi4()
+const client = useStrapiClient()
 
-const categories = await find<CategoriesResponse>('categories', {
+const query = qs.stringify({
 	fields: ['name', 'slug'],
-})
+}, {
+	encodeValuesOnly: true,
+});
+
+const { data: categories } = await useAsyncData(
+	'categories',
+	() => client<CategoriesResponse>(`categories?${query}`),
+	{
+		default: () => ({ data: [] })
+	}
+)
+
+console.log('haha');
+
 
 const isActive = (param: string) => param === route.params.category ? true : false
 </script>
 
 <template>
-	<ul class="flex justify-between lg:space-x-12 w-full h-full list-none">
+	<ul 
+		class="flex justify-between lg:space-x-12 list-none w-full h-full"
+	>
 		<li
 			v-for="category in categories.data"
 			:key="category.id"
