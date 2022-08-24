@@ -27,6 +27,9 @@ export default defineNuxtConfig({
 				{ children: process.env.GA_SCRIPT },
 				{ src: process.env.GA_URL, hid: 'gtm', async: true },
 			],
+			link: [
+				{ rel: 'icon', type: 'image/png', href: '/assets/favicon.png' }
+			]
 		},
 	},
 
