@@ -71,7 +71,7 @@ useHead({
 				:name="product.attributes.name" 
 				:price="product.attributes.prices[0].variants[0].price" 
 				:slug="product.attributes.slug"
-				:image="product.attributes.images.data[0].attributes.formats.small.url"
+				:image="product.attributes.images.data[0].attributes.formats.small.hash + product.attributes.images.data[0].attributes.formats.small.ext"
 				:category="param"
 			/>
 		</section>

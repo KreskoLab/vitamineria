@@ -24,15 +24,12 @@ const { data: categories } = await useAsyncData(
 	}
 )
 
-console.log('haha');
-
-
 const isActive = (param: string) => param === route.params.category ? true : false
 </script>
 
 <template>
 	<ul 
-		class="flex justify-between lg:space-x-12 list-none w-full h-full"
+		class="flex justify-between md:(justify-start gap-12) list-none w-full h-full"
 	>
 		<li
 			v-for="category in categories.data"

@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"@iconify-json/tabler": "^1.1.21",
+		"@nuxt/image-edge": "^1.0.0-27657146.da85542",
 		"@nuxtjs/eslint-config": "^10.0.0",
 		"@nuxtjs/eslint-config-typescript": "^10.0.0",
 		"@nuxtjs/partytown": "^1.2.1",
