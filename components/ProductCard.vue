@@ -20,12 +20,18 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 					format="webp"
 					quality="80"
 					class="md:h-[440px] w-full"
+					loading="lazy"
 				/>
 			</div>
 
 			<div class="flex flex-col items-center w-full mt-1 lg:mt-2">
-				<h1 class="text-base lg:text-xl text-center font-medium text-dark-400 break-words px-2">{{ name }}</h1>
-				<span class="text-base lg:text-lg text-dark-100">{{ decimalPrice }} грн</span>
+				<h1 class="text-base lg:text-xl text-center font-medium text-dark-400 break-words px-2">
+					{{ name }}
+				</h1>
+
+				<span class="text-base lg:text-lg text-dark-100">
+					{{ decimalPrice }} грн
+				</span>
 			</div>
 		</NuxtLink>
 	</article>

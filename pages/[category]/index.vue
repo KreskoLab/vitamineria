@@ -26,7 +26,7 @@ const query = qs.stringify({
 		products: {
 			populate: {
 				images: {
-					fields: ['formats']
+					fields: ['formats'],
 				},
 				prices: {
 					fields: '*'

@@ -75,6 +75,15 @@ export const fetchCartProducts = async () => {
 	const client = useStrapiClient()
 
 	const query = stringify({
+		fields: ['name', 'slug'],
+		populate: {
+			images: {
+				fields: ['formats'],
+			},
+			prices: {
+				fields: '*'
+			}
+		},
 		filters: {
 			id: {
 				$in: products.value.length ? products.value.map(item => item.id) : '',
@@ -87,10 +96,10 @@ export const fetchCartProducts = async () => {
 	cartProducts.value = []
 
 	if (products.value.length) {
-		const { data: response } = await client<ProductResponse>(`products?${query}&populate=*`)
+		const { data: response } = await client<ProductResponse>(`products?${query}`)
 
 		products.value.forEach(item => {
-			const { attributes } = JSON.parse(JSON.stringify(response.find(product => product.id === item.id))) as  Strapi4ResponseData<Product>
+			const { attributes } = JSON.parse(JSON.stringify(response.find(product => product.id === item.id))) as Strapi4ResponseData<Product>
 			const price = attributes.prices[0].variants.find(variant => variant.weight === item.weight).price
 
 			attributes.count = item.count

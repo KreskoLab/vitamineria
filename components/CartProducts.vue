@@ -52,7 +52,7 @@ async function removeProduct(id: number, weight: string) {
 
 					<div class="flex flex-col justify-between items-end !ml-auto">
 						<span class="text-sm font-medium">
-							{{ product.prices[0].variants[0].price }} ₴
+							{{ product.prices[0].variants[0].price }} грн
 						</span>
 
 						<button @click="removeProduct(product.id, product.prices[0].variants[0].weight)">
