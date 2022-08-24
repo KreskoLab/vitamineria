@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 		head: {
 			script: [
 				{ children: process.env.GA_SCRIPT },
-				{ src: process.env.GA_URL, hid: 'gtm' },
+				{ src: process.env.GA_URL, hid: 'gtm', async: true },
 			],
 		},
 	},
