@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			script: [
-				{ src: process.env.GA_URL, async: true, type: 'text/partytown' },
+				{ src: process.env.GA_URL, children: process.env.GA_SCRIPT, async: true, type: 'text/partytown', hid: 'gtm' },
 			],
 		},
 	},
