@@ -42,6 +42,10 @@ const query = qs.stringify({
 const { data: category } = await useAsyncData(
 	'category',
 	() => client<CategoryResponse>(`categories?${query}`),
+	{
+		initialCache: false,
+		default: () => ({ data: [] })
+	}
 )
 
 useHead({
@@ -52,7 +56,7 @@ useHead({
 <template>
 	<div 
 		class="flex flex-col w-full h-[calc(100vh-5rem)] lg:(h-[calc(100vh-5.5rem)]) overflow-y-auto"
-		
+		:style="{ 'background-color': category.data[0].attributes.color }"
 	>
 		<section class="flex flex-col space-y-1 pt-5 lg:(space-y-3 px-12 pt-6)">
 			<h1 class="text-center text-4xl lg:(text-6xl font-normal) font-medium text-dark-200 uppercase tracking-widest">
