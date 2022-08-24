@@ -68,7 +68,7 @@ useHead({
 			</p>
 		</section>
 
-		<section class="mt-8 grid place-items-center grid-cols-2 gap-x-6 gap-y-3 px-4 lg:(grid-cols-3 gap-6 px-32) pb-8">
+		<section class="mt-8 grid place-items-center grid-cols-2 gap-x-6 gap-y-3 px-4 xl:(grid-cols-3 gap-6 px-32) pb-8">
 			<ProductCard 
 				v-for="product in category.data[0].attributes.products.data"
 				:key="product.id" 

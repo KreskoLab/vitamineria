@@ -41,4 +41,5 @@
 html {
 	font-family: 'Rubik';
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }

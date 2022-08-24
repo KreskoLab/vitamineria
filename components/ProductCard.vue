@@ -11,7 +11,7 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 </script>
 
 <template>
-	<article class="flex flex-col w-full h-full md:w-84">
+	<article class="flex flex-col w-full h-full lg:w-84">
 		<NuxtLink :to="`/${category}/${slug}`">
 			<div class="flex items-center justify-center border-4 border-light-50">
 				<NuxtImg 
