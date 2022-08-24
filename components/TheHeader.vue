@@ -1,5 +1,5 @@
 <template>
-	<header class="fixed top-0 left-0 w-full h-20 lg:h-22 min-w-[375px] border-b-2 border-gray-600 bg-light-50 z-99">
+	<header class="fixed top-0 left-0 w-full h-20 lg:h-22 min-w-[350px] border-b-2 border-gray-600 bg-light-50 z-99">
 		<div class="flex flex-row flex-wrap px-4 pt-1 mx-auto lg:(justify-between w-full h-full px-12) items-center max-w-screen-2xl">
 			<div class="flex lg:flex-1 justify-start">
 				<NuxtLink class="flex items-center space-x-1" to="/" >
@@ -21,7 +21,7 @@
 				</NuxtLink>
 			</div>
 
-			<nav class="flex w-full mt-1.5 order-last lg:(h-full items-center w-max mt-0)">
+			<nav class="flex flex-wrap w-full mt-1.5 order-last lg:(h-full items-center w-max mt-0)">
 				<CategoriesList />
 			</nav>
 

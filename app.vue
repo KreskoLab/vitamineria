@@ -4,7 +4,7 @@ await fetchCartProducts()
 </script>
 
 <template>
-	<div class="min-h-screen bg-stone-100 min-w-[375px]">
+	<div class="min-h-screen bg-stone-100 min-w-[350px]">
 		<TheHeader />
 
 		<TheCart 
