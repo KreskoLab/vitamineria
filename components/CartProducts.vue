@@ -28,7 +28,7 @@ async function removeProduct(id: number, weight: string) {
 
 <template>
 	<div class="flex flex-col justify-between h-full">
-		<div class="overflow-y-auto max-h-112 px-4 py-6">
+		<div class="overflow-y-auto max-h-112 h-full px-4 py-6">
 			<ul 
 				v-if="cartFull" 
 				class="space-y-8"

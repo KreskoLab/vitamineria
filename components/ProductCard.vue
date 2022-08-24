@@ -25,7 +25,7 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 			</div>
 
 			<div class="flex flex-col items-center w-full mt-1 lg:mt-2">
-				<h1 class="text-base lg:text-xl text-center font-medium text-dark-400 break-words px-2">
+				<h1 class="text-base lg:text-xl text-center font-medium text-dark-400 break-words">
 					{{ name }}
 				</h1>
 
