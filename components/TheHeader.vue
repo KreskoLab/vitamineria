@@ -5,7 +5,7 @@
 				<NuxtLink class="flex items-center justify-center" to="/" >
 					<img
 						class="w-42"
-						src="@/assets/appy3.svg"
+						src="@/assets/logo.svg"
 						alt="logo"
 					/>
 				</NuxtLink>
@@ -26,13 +26,13 @@
 					<img
 						width="38"
 						height="38"
-						src="@/assets/logo.svg"
-						alt="logo"
+						src="@/assets/icon.svg"
+						alt="icon"
 					/>
 
 					<img
 						class="w-64"
-						src="@/assets/appy3.svg"
+						src="@/assets/logo.svg"
 						alt="logo"
 					/>
 				</NuxtLink>

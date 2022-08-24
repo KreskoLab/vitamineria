@@ -14,6 +14,7 @@
 		"@iconify-json/tabler": "^1.1.21",
 		"@nuxtjs/eslint-config": "^10.0.0",
 		"@nuxtjs/eslint-config-typescript": "^10.0.0",
+		"@nuxtjs/partytown": "^1.2.1",
 		"@nuxtjs/strapi": "^1.5.0",
 		"@vueuse/core": "^9.1.0",
 		"@vueuse/nuxt": "^9.1.0",

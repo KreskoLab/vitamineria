@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const cart = useCart()
-const login = useLogin()
-
 await fetchCartProducts()
 </script>
 
@@ -12,11 +10,6 @@ await fetchCartProducts()
 		<TheCart 
 			v-if="cart" 
 			@close="cart = false" 
-		/>
-
-		<LoginModal
-			v-if="login"
-			@close="login = false"
 		/>
 
 		<NuxtLoadingIndicator />
