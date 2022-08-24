@@ -4,7 +4,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-	modules: ['nuxt-windicss', '@nuxtjs/strapi', 'unplugin-icons/nuxt', '@vueuse/nuxt', '@nuxtjs/partytown'],
+	modules: ['nuxt-windicss', '@nuxtjs/strapi', 'unplugin-icons/nuxt', '@vueuse/nuxt'],
 
 	css: ['@/assets/main.css'],
 
@@ -12,14 +12,10 @@ export default defineNuxtConfig({
 		url: process.env.NUXT_PUBLIC_STRAPI || 'http://localhost:1337'
 	},
 
-	partytown: {
-		forward: ['dataLayer.push'],
-	},
-
 	app: {
 		head: {
 			script: [
-				{ src: process.env.GA_URL, children: process.env.GA_SCRIPT, async: true, type: 'text/partytown', hid: 'gtm' },
+				{ src: process.env.GA_URL, children: process.env.GA_SCRIPT, async: true, type: 'text/javascript', hid: 'gtm' },
 			],
 		},
 	},
