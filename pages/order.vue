@@ -42,7 +42,7 @@ onMounted(async () => {
 		</h1>
 
 		<p v-if="res === 'success' || res === 'pending'" class="text-2xl text-center md:text-3xl font-medium">
-			На вашу пошту відправлено письмо
+			На вашу пошту відправлено лист
 		</p>
 
 		<p v-if="res === 'success' || res === 'pending'" class="text-center text-2xl mt-4">
