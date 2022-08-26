@@ -1,22 +1,33 @@
 <script setup lang="ts">
-const emit = defineEmits<{
+defineEmits<{
 	(event: 'close'): void
 }>()
 
-const show = ref<boolean>(false)
-const route = useRoute()
-const config = useRuntimeConfig()
+const loginModal = reactive({
+	show: false,
+	send: false,
+	email: '',
+})
 
-function close() {
-	emit('close')
+const client = useStrapiClient()
+
+async function logIn() {
+	try {
+		await client('/passwordless/send-link', { 
+			body: { 
+				email: loginModal.email
+			},
+			method: 'POST'
+		})
+
+		loginModal.send = true
+
+	} catch (error) {
+		loginModal.show = false
+	}
 }
 
-function auth(provider: string) {
-	localStorage.setItem('redirect', route.path)
-	window.location.href = `${config.strapi.url}/api/connect/${provider}`
-}
-
-onMounted(() => (show.value = true))
+onMounted(() => (loginModal.show = true))
 </script>
 
 <template>
@@ -27,50 +38,55 @@ onMounted(() => (show.value = true))
 			<Transition
 				enter-active-class="animate-animated animate-faster animate-fadeInUp"
 				leave-active-class="animate-animated animate-faster animate-fadeOutDown"
-				@after-leave="close()"
+				@after-leave="$emit('close')"
 			>
 				<dialog
-					v-if="show"
-					class="w-[90%] h-[320px] md:w-[60%] lg:(w-[420px] h-[380px]) bg-gradient-19 p-4"
+					v-if="loginModal.show"
+					class="w-[90%] h-[320px] md:w-[60%] lg:(w-[420px] h-[320px]) bg-gradient-19 p-4"
 					open
 				>
 					<div
 						class="relative flex flex-col justify-center w-full h-full border-2 border-gray-600 bg-light-50"
 					>
-						<section class="flex flex-col items-center space-y-1 justify-center">
+						<header class="flex flex-col items-center justify-center">
 							<img
 								width="248"
 								height="248"
-								src="@/assets/appy3.svg"
+								src="@/assets/logo.svg"
 								alt="logo"
 							/>
+						</header>
 
-							<p class="font-medium text-2xl text-center italic text-dark-100">
-								Увійти за допомогою
-							</p>
-						</section>
+						<form 
+							class="mt-8"
+							@submit.prevent="logIn()"
+						>
+							<div class="flex flex-col items-center space-y-6">
+								<template v-if="!loginModal.send">
+									<AppInput 
+										class="px-8"
+										placeholder="Ваш email" 
+										required
+										message="Введіть email адресу"
+										@input="loginModal.email = $event"
+									/>
+							
+									<button
+										class="hover:bg-green-200 auth-button"
+									>
+										<span class="text-lg font-medium mx-auto">Увійти</span>
+									</button>
+								</template>
 
-						<section class="flex flex-col items-center space-y-6 mt-8">
-							<button
-								class="hover:bg-orange-200 auth-button"
-								@click="auth('google')"
-							>
-								<IconTablerBrandGoogle class="w-5 h-5" />
-								<span class="text-lg font-medium mx-auto">Google</span>
-							</button>
-
-							<button
-								class="hover:bg-sky-200 auth-button"
-								@click="auth('facebook')"
-							>
-								<IconTablerBrandFacebook class="w-5 h-5" />
-								<span class="text-lg font-medium mx-auto">Facebook</span>
-							</button>
-						</section>
+								<template v-else>
+									<p class="text-lg">На вашу пошту відправлено лист</p>
+								</template>
+							</div>
+						</form>
 
 						<button
 							class="flex items-center justify-center absolute top-5 right-5 outline-transparent"
-							@click="show = false"
+							@click="loginModal.show = false"
 						>
 							<IconTablerX
 								class="w-5 h-5 text-gray-400 hover:text-red-600 transition duration-150"

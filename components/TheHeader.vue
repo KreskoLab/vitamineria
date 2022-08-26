@@ -25,7 +25,8 @@
 				<CategoriesList />
 			</nav>
 
-			<div class="flex items-center justify-end order-2 ml-auto lg:(flex-1 order-last)">
+			<div class="flex items-center justify-end space-x-6 order-2 ml-auto lg:(flex-1 order-last)">
+				<UserNav />
 				<CartIcon />
 			</div>
 		</div>
