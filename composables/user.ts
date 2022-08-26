@@ -8,7 +8,7 @@ export const useFetchUser = async () => {
 	const client = useStrapiClient()
   
 	try {
-		const response = await client<User>('/users/me?populate[cart][populate][0]=images')
+		const response = await client<User>('/users/me?populate[cart][populate][0]=images', { credentials: 'include' })
 		user.value = response
 	} catch (error) {
 		user.value = {} as User
