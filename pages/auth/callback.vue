@@ -12,7 +12,7 @@ onMounted(async () => {
 
 		accessToken.value = jwt
 
-		await new Promise((resolve) => setTimeout(() => resolve('ok'), 100))
+		await new Promise((resolve) => setTimeout(() => resolve('ok'), 1000))
 		await useFetchUser()
 	} catch (error) {
 		console.log(error);
