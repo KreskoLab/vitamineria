@@ -2,7 +2,6 @@
 const user = useUser()
 const login = useLogin()
 
-const { logout } = useStrapiAuth()
 
 const displayName = computed(() => {
 	if (user.value.filled) return `${user.value.name} ${user.value.surname}`
@@ -13,20 +12,20 @@ const displayName = computed(() => {
 <template>
 	<div class="flex items-center justify-center h-full">
 		<div v-if="user.email">
-			<AppDropdown class="hidden md:block">
+			<AppDropdown class="hidden md:block" menu="top-14">
 				<span class="text-lg h-full px-4">
 					{{ displayName }}
 				</span>
 
 				<template #menu>
 					<AppDropdownItem>
-						<NuxtLink class="block w-full" to="/account">
+						<NuxtLink class="inline-block w-full h-full" to="/account">
 							Аккаунт
 						</NuxtLink>
 					</AppDropdownItem>
 
 					<AppDropdownItem 
-						@click="logout"
+						@click="useLogOut()"
 					>
 						Вийти
 					</AppDropdownItem>

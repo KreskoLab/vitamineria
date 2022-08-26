@@ -21,3 +21,12 @@ export const useFetchUser = async () => {
 		user.value = {} as User
 	}
 }
+
+export const useLogOut = () => {
+	const { logout } = useStrapiAuth()
+
+	logout()
+
+	const user = useUser()
+	user.value = {} as User
+}
