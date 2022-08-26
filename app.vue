@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const cart = useCart()
-await fetchCartProducts()
+const login = useLogin()
+
+await Promise.all([fetchCartProducts(), useFetchUser()])
 </script>
 
 <template>
@@ -10,6 +12,11 @@ await fetchCartProducts()
 		<TheCart 
 			v-if="cart" 
 			@close="cart = false" 
+		/>
+
+		<LoginModal
+			v-if="login"
+			@close="login = false"
 		/>
 
 		<NuxtLoadingIndicator />
