@@ -5,21 +5,16 @@ const client = useStrapiClient()
 
 const loginToken = route.query['loginToken']
 
-onMounted(async () => {
-	try {
-		const { jwt } = await client(`/passwordless/login?loginToken=${loginToken}`)
-		const accessToken = useCookie('strapi_jwt', { maxAge: 60 * 60 * 24  * 30 })
+if (loginToken) {
+	const { data: response } = await useAsyncData('jwt', () => client(`/passwordless/login?loginToken=${loginToken}`))
+	const accessToken = useCookie('strapi_jwt', { maxAge: 60 * 60 * 24  * 30 })
 
-		accessToken.value = jwt
-
-		await new Promise((resolve) => setTimeout(() => resolve('ok'), 1000))
-		await useFetchUser()
-	} catch (error) {
-		console.log(error);
+	if (response.value?.jwt) {
+		accessToken.value = response.value.jwt
 	}
+}
 
-	router.push('/pastila')
-})
+onMounted(() => router.push('/pastila'))
 </script>
 
 <template>
