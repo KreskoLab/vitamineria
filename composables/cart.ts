@@ -13,27 +13,21 @@ export const cartCookie = () => useCookie<CartProduct[]>('cartCookie', { maxAge:
 export const useCartProducts = () => useState<Product[]>('cartProducts', () => [])
 
 export const addToCart = async (product: CartProduct) => {
-	const user = useUser()
-
-	if (!user.value.email) {
-		const cart = cartCookie()
-		const products = [...cart.value]
-		const productExist = products.find(item => item.id === product.id)
+	const cart = cartCookie()
+	const products = [...cart.value]
+	const productExist = products.find(item => item.id === product.id)
     
-		if (productExist && productExist.weight === product.weight) {
-			console.log(productExist);
-      
-			productExist.count++
-		} else {
-			products.push(product)
-		}        
+	if (productExist && productExist.weight === product.weight) {      
+		productExist.count++
+	} else {
+		products.push(product)
+	}        
 
-		cart.value = products
+	cart.value = products
     
-		await new Promise((resolve) => {
-			setTimeout(() => resolve(fetchCartProducts()), 500)
-		})
-	}
+	await new Promise((resolve) => {
+		setTimeout(() => resolve(fetchCartProducts()), 500)
+	})
 }
 
 export const removeFromCart = async (product: Omit<CartProduct, 'count'>) => {  

@@ -9,8 +9,7 @@ interface ProductResponse {
 
 const client = useStrapiClient()
 const route = useRoute()
-const user = useUser()
-const login = useLogin()
+
 
 const param = route.params.product as string
 
