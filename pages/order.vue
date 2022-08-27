@@ -6,21 +6,19 @@ const orderId = route.query['id']
 
 let res = ref<'success' | 'error' | 'pending'>('error');
 
-onMounted(async () => {
-	try {
-		res.value = await client<'success' | 'error' | 'pending'>(`/me/order?id=${orderId}`, { method: 'GET' })
-	} catch (error) {
-		console.log(error);
-	}
+try {
+	res.value = await client<'success' | 'error' | 'pending'>(`/me/order?id=${orderId}`, { method: 'GET' })
+} catch (error) {
+	console.log(error);
+}
 
-	if (res.value === 'success' || res.value === 'pending') {
-		await clearCart()
-	} else {
-		await new Promise((resolve) => {
-			setTimeout(() => resolve(navigateTo('/pastila')), 5000)
-		})
-	}
-})
+if (res.value === 'success' || res.value === 'pending') {
+	await clearCart()
+} else {
+	await new Promise((resolve) => {
+		setTimeout(() => resolve(navigateTo('/pastila')), 5000)
+	})
+}
 </script>
 
 <template>
@@ -33,7 +31,7 @@ onMounted(async () => {
 			</template>
 
 			<template v-if="res === 'pending'">
-				Замовлення оброблюється
+				Замовлення в обробці
 			</template>
 
 			<template v-if="res === 'error'">
