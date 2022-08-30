@@ -166,7 +166,7 @@ function selectVariant(variant: Variant) {
 				class="flex justify-center items-center w-8 h-8 bg-white border-2 border-gray-600 absolute top-5 lg:top-6 right-6 transform duration-100 z-10 hover:(translate-y-[1px]) after:(content-DEFAULT absolute transform translate-y-[0.4rem] -right-[2px] -left-[2px] bottom-0 border border-t-4 border-t-gray-600 border-transparent) after:hover:(bottom-[1.5px])"
 				@click="$router.back()"
 			>
-				<IconTablerLetterX class="w-4 h-4 text-dark-200" />
+				<IconTablerArrowBack class="w-4 h-4 text-dark-200" />
 			</button>
 		</section>
 
