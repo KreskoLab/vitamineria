@@ -13,7 +13,7 @@ const route = useRoute()
 const param = route.params.product as string
 
 const { data: response } = await client<ProductResponse>(`products?filters[slug][$eq]=${param}&populate=*`)
-const { name, images, prices, brief, ...rest } = response[0].attributes
+const { name, images, prices, brief, in_stock, ...rest } = response[0].attributes
 
 const computedAttributes = computed(() => Object.fromEntries(Object.entries(attirbutes).filter(([key]) => rest[key]).map(([key]) => {
 	return [key, rest[key]]
@@ -85,8 +85,8 @@ function selectVariant(variant: Variant) {
 				</div>
 			</div>
 
-			<div class="flex items-center bg-light-50">
-				<AppDropdown class="w-48 border-t-2 border-r-2 border-gray-600">
+			<div v-if="in_stock" class="flex items-center bg-light-50">
+				<AppDropdown class="w-48 border-t-2 border-r-2 border-gray-600 py-5">
 					<template #default>
 						<div class="flex items-center justify-evenly">
 							<span class="text-center text-xl">
