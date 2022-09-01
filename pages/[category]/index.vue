@@ -32,7 +32,7 @@ const query = qs.stringify({
 					fields: '*'
 				}
 			},
-			fields: ['name', 'slug']
+			fields: ['name', 'slug', 'in_stock']
 		},
 	},
 }, {
