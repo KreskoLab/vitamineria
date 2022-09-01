@@ -23,6 +23,7 @@ export type Product = {
 	payment: string
 	price: number
 	count?: number
+	in_stock: boolean
 	energy: {
 		title: string,
 		value: string

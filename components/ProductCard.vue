@@ -4,14 +4,15 @@ const props = defineProps<{
 	slug: string,
 	category: string,
 	price: number,
-	image?: string
+	image?: string,
+	inStock: boolean
 }>()
 
 const decimalPrice = computed(() => props.price.toFixed(2))
 </script>
 
 <template>
-	<article class="flex flex-col w-full h-full">
+	<article class="relative flex flex-col w-full h-full">
 		<NuxtLink :to="`/${category}/${slug}`">
 			<NuxtImg 
 				:src="image"
@@ -31,5 +32,12 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 				</span>
 			</div>
 		</NuxtLink>
+
+		<div 
+			v-if="inStock"
+			class="absolute -right-3 top-2 sm:(top-5 right-0 w-42) transform rotate-20 bg-red-400 py-1 px-3"
+		>
+			<p class="font-medium text-center">закінчився</p>
+		</div>
 	</article>
 </template>
