@@ -9,7 +9,6 @@ interface ProductResponse {
 
 const client = useStrapiClient()
 const route = useRoute()
-const router = useRouter()
 
 const param = route.params.product as string
 
@@ -68,7 +67,16 @@ function selectVariant(variant: Variant) {
 	<article class="flex flex-col h-[calc(100vh-5rem)] top-20 z-10 md:(fixed flex-row h-[calc(100vh-5.5rem)] top-22) bg-[#FCF7F1]">
 		<section class="relative flex flex-col h-full order-last md:(order-first min-w-156 max-w-156 overflow-y-auto)">
 			<div class="flex flex-col space-y-4 py-5 px-4 border-t-2 lg:(border-r-2 border-t-0) border-gray-600">
-				<h1 class="text-2xl lg:text-4xl text-dark-400 font-medium tracking-wide">{{ name }}</h1>
+				<div class="flex items-start justify-between">
+					<h1 class="text-2xl lg:text-4xl text-dark-400 font-medium tracking-wide">{{ name }}</h1>
+
+					<button 
+						class="flex justify-center items-center w-8 h-8 flex-shrink-0 bg-white border-2 border-gray-600 transform duration-100 z-10 hover:(translate-y-[1px]) after:(content-DEFAULT absolute transform translate-y-[0.4rem] -right-[2px] -left-[2px] bottom-0 border border-t-4 border-t-gray-600 border-transparent) after:hover:(bottom-[1.5px])"
+						@click="$router.back()"
+					>
+						<IconTablerArrowBack class="w-4 h-4 text-dark-200" />
+					</button>
+				</div>
 
 				<div v-html="marked(brief)" />
 
@@ -161,13 +169,6 @@ function selectVariant(variant: Variant) {
 					</span>
 				</div>
 			</div>
-
-			<button 
-				class="flex justify-center items-center w-8 h-8 bg-white border-2 border-gray-600 absolute top-5 lg:top-6 right-6 transform duration-100 z-10 hover:(translate-y-[1px]) after:(content-DEFAULT absolute transform translate-y-[0.4rem] -right-[2px] -left-[2px] bottom-0 border border-t-4 border-t-gray-600 border-transparent) after:hover:(bottom-[1.5px])"
-				@click="$router.back()"
-			>
-				<IconTablerArrowBack class="w-4 h-4 text-dark-200" />
-			</button>
 		</section>
 
 		<section class="w-full order-first md:(order-last overflow-y-auto h-full)">
