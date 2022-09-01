@@ -82,7 +82,7 @@ function getSubcategories(subcategories: object[], category: string) {
 			<ul
 				v-if="subcategoriesMenu.show"
 				ref="menu"
-				class="flex flex-col flex-wrap gap-x-16 content-start justify-between  absolute top-21 h-40 bg-white border-2 border-t-0 border-gray-600 z-50 transform -translate-x-1/2 left-1/2 w-[calc(100%+120px)] py-6 px-8"
+				class="flex flex-col flex-wrap gap-x-16 content-start justify-between  absolute top-21 h-40 bg-white border-2 border-t-0 border-gray-600 z-50 transform -translate-x-1/2 left-1/2 w-[calc(100%+160px)] py-6 px-8"
 				@mouseleave="subcategoriesMenu.show = false"
 			>
 				<li 
