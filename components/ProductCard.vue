@@ -4,8 +4,10 @@ const props = defineProps<{
 	slug: string,
 	category: string,
 	price: number,
-	image?: string,
 	inStock: boolean
+	image?: string,
+	height?: number,
+	width?: number,
 }>()
 
 const decimalPrice = computed(() => props.price.toFixed(2))
@@ -16,10 +18,12 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 		<NuxtLink :to="`/${category}/${slug}`">
 			<NuxtImg 
 				:src="image"
+				:width="width"
+				:height="height"
 				provider="cloudinary"
 				format="webp"
 				loading="lazy"
-				class="border-4 border-light-50 h-auto max-w-full"
+				class="border-4 border-light-50 h-auto max-w-full object-cover"
 			/>
 
 			<div class="flex flex-col items-center w-full mt-1 lg:mt-2">

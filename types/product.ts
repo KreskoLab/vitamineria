@@ -9,6 +9,8 @@ export type Image = {
 		small: {
 			hash: string
 			ext: string
+			width: number
+			height: number
 		}
 	}
 }
