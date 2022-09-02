@@ -4,7 +4,13 @@ export type Image = {
 	size: number
 	updatedAt: string
 	url: string
-	width: number
+	width: number,
+	formats: {
+		small: {
+			hash: string
+			ext: string
+		}
+	}
 }
 
 export type Variant = {

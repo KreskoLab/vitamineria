@@ -18,7 +18,7 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 				:src="image"
 				provider="cloudinary"
 				format="webp"
-				quality="80"
+				loading="lazy"
 				class="border-4 border-light-50 h-auto max-w-full"
 			/>
 

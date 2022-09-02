@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import type { Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types/v4'
-import type { Product, Variant } from '~/types/product';
 import { marked } from 'marked';
-
-interface ProductResponse {
-	data: Strapi4ResponseData<Product>[]
-}
+import { productAttirbutes, smiles } from '~~/content';
+import { ProductResponse } from '~~/interfaces';
+import type { Variant } from '~/types/product';
 
 const client = useStrapiClient()
 const route = useRoute()
@@ -15,7 +12,7 @@ const param = route.params.product as string
 const { data: response } = await client<ProductResponse>(`products?filters[slug][$eq]=${param}&populate=*`)
 const { name, images, prices, brief, in_stock, ...rest } = response[0].attributes
 
-const computedAttributes = computed(() => Object.fromEntries(Object.entries(attirbutes).filter(([key]) => rest[key]).map(([key]) => {
+const computedAttributes = computed(() => Object.fromEntries(Object.entries(productAttirbutes).filter(([key]) => rest[key]).map(([key]) => {
 	return [key, rest[key]]
 })))
 
@@ -28,30 +25,6 @@ const cartProduct = reactive({
 	variant: prices[0].variants[0].weight,
 	price: prices[0].variants[0].price
 })
-
-const attirbutes = {
-	description: 'Опис',
-	description2: 'Користь складових пастили',
-	composition: 'Склад',
-	energy: 'Поживна цінність',
-	storage: 'Умови зберігання',
-	payment: 'Оплата та доставка'
-}
-
-const smiles = [
-	{
-		title: 'Смачно',
-		image: 'https://a.storyblok.com/f/54304/x/7201467479/group-612.svg'
-	},
-	{
-		title: 'Поживно',
-		image: 'https://a.storyblok.com/f/54304/x/0847c1d2fe/pink-icon.svg'
-	},
-	{
-		title: 'Корисно',
-		image: 'https://a.storyblok.com/f/54304/x/ad17edd706/group-614.svg'
-	}
-]
 
 async function add() {
 	await addToCart({ id: response[0].id, weight: cartProduct.variant, count: 1 })
@@ -126,13 +99,13 @@ function selectVariant(variant: Variant) {
 				>
 					<template #trigger>
 						<h2 class="text-2xl font-semibold text-dark-400 text-left">
-							{{ attirbutes[i] }}
+							{{ productAttirbutes[i] }}
 						</h2>
 					</template>
 
 					<template #content>
 						<div 
-							v-if="attirbutes[i] !== attirbutes['energy']" 
+							v-if="productAttirbutes[i] !== productAttirbutes['energy']" 
 							v-html="marked(item)" 
 						/>
 
