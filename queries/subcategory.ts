@@ -10,7 +10,7 @@ export const subcategoryQuery = (param: string) => qs.stringify({
 	populate: {
 		products: {
 			populate: {
-				images: {
+				cover: {
 					fields: ['formats'],
 				},
 				prices: {

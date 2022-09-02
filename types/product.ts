@@ -39,5 +39,6 @@ export type Product = {
 	prices: {
 		variants: Variant[]
 	}[]
+	cover: { data: Strapi4ResponseData<Image> }
 	images: { data: Strapi4ResponseData<Image>[] }
 }

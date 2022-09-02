@@ -10,11 +10,11 @@ export const categoryQuery = (param: string) => qs.stringify({
 	populate: {
 		products: {
 			populate: {
-				images: {
-					fields: ['formats'],
-				},
 				prices: {
 					fields: '*'
+				},
+				cover: {
+					fields: ['formats'],
 				}
 			},
 			fields: ['name', 'slug', 'in_stock']

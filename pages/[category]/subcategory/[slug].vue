@@ -41,9 +41,9 @@ useHead({
 				:slug="product.attributes.slug"
 				:in-stock="product.attributes.in_stock"
 				:price="product.attributes.prices[0].variants[0].price" 
-				:image="product.attributes.images.data[0].attributes.formats.small.hash + product.attributes.images.data[0].attributes.formats.small.ext"
-				:height="product.attributes.images.data[0].attributes.formats.small.height"
-				:width="product.attributes.images.data[0].attributes.formats.small.width"
+				:image="product.attributes.cover.data.attributes.formats.small.hash + product.attributes.cover.data.attributes.formats.small.ext"
+				:height="product.attributes.cover.data.attributes.formats.small.height"
+				:width="product.attributes.cover.data.attributes.formats.small.width"
 			/>
 		</section>
 	</div>
