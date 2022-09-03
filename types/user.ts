@@ -8,8 +8,6 @@ export type User = {
 	filled: boolean
 	region: string
 	city: string
-	adress: string
-	adress2: string
 	postcode: string
 	cart: {
 		id: number

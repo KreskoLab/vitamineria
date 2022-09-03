@@ -8,7 +8,6 @@ const route = useRoute()
 const param = route.params.category as string
 const query = categoryQuery(param)
 
-
 const { data: category } = await useAsyncData(
 	'category',
 	() => client<CategoryResponse>(`categories?${query}`),
