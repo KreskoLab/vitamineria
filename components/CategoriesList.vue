@@ -36,7 +36,11 @@ function showMenuOnMobile(to: string, subcategories: object[]) {
 	if (!subcategories.length) router.push(`/${to}`)
 
 	else {
-		if (subcategoriesMenu.show) router.push(`/${to}`)
+		if (subcategoriesMenu.show) {
+			if (`/${to}` === route.path) subcategoriesMenu.show = false  
+			else router.push(`/${to}`)
+		}
+		
 		else getSubcategories(subcategories, to)
 	}
 }
