@@ -8,8 +8,6 @@ export default defineNuxtConfig({
 
 	css: ['@/assets/main.css'],
 
-	target: 'static',
-
 	strapi: {
 		url: process.env.NUXT_PUBLIC_STRAPI || 'http://localhost:1337'
 	},
@@ -47,4 +45,11 @@ export default defineNuxtConfig({
 			}),
 		],
 	},
+
+	nitro: {
+		prerender: {
+			crawlLinks: true,
+			ignore: ['/auth/', '/account/', '/account', '/order']
+		}
+	}
 })
