@@ -13,6 +13,8 @@ defineProps<{
 const { find } = useStrapi4()
 const client = useStrapiClient()
 
+const user = useUser()
+
 const form = ref<HTMLFormElement | null>(null)
 
 const [formData, adressData] = await Promise.all([
@@ -29,6 +31,16 @@ const order = reactive<OrderInfo>({
 	payment: 'online',
 	post: {
 		name: 'novaposhta'
+	}
+})
+
+onMounted(() => {
+	if (user.value.email) {
+		const userCredentials = getUserCredentials()
+		const userAddress = getUserAddress()
+
+		Object.assign(order, userCredentials)
+		Object.assign(order.post, userAddress)
 	}
 })
 
@@ -118,7 +130,10 @@ async function validate() {
 					/>
 				</fieldset>
 
-				<fieldset class="px-4 pb-6 pt-2">
+				<fieldset
+					v-if="!user.email" 
+					class="px-4 pb-6 pt-2"
+				>
 					<AppCheckbox 
 						v-model="order.account"
 						label="Створити аккаунт"

@@ -30,3 +30,13 @@ export const useLogOut = () => {
 	const user = useUser()
 	user.value = {} as User
 }
+
+export const getUserCredentials = () => {
+	const { name, surname, email, phone } = useUser().value
+	return {name, surname, email, phone}
+}
+
+export const getUserAddress = () => {
+	const { city, region, postcode } = useUser().value
+	return { city, region, postcode }
+}
