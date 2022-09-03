@@ -85,13 +85,13 @@ function showMenuOnMobile(to: string, subcategories: object[]) {
 		>
 			<ul
 				v-if="subcategoriesMenu.show"
-				class="flex flex-col flex-wrap gap-x-16 content-start justify-between absolute top-8.5 w-[calc(100%+32px)] border-x-0 border-b-2 lg:(top-21 w-[calc(100%+160px)] border-2 border-t-0) h-40 bg-white border-gray-600 z-50 transform -translate-x-1/2 left-1/2 py-6 px-8"
+				class="flex flex-col flex-wrap gap-x-16 content-start absolute top-8.5 w-[calc(100%+32px)] border-x-0 border-b-2 lg:(top-21 w-[calc(100%+160px)] border-2 border-t-0) h-38 bg-white border-gray-600 z-50 transform -translate-x-1/2 left-1/2 pt-7 px-8"
 				@mouseleave="subcategoriesMenu.show = false"
 			>
 				<li 
 					v-for="subcategory in subcategoriesMenu.list" 
 					:key="subcategory.id"
-					class="text-lg"
+					class="text-lg h-8"
 				>
 					<nuxt-link :to="`/${subcategoriesMenu.category}/subcategory/${subcategory.attributes.slug}`">
 						{{ subcategory.attributes.name }}
