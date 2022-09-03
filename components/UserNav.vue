@@ -1,12 +1,6 @@
 <script setup lang="ts">
 const user = useUser()
 const login = useLogin()
-
-
-const displayName = computed(() => {
-	if (user.value.filled) return `${user.value.name} ${user.value.surname}`
-	else return user.value.email
-})
 </script>
 
 <template>
@@ -14,7 +8,7 @@ const displayName = computed(() => {
 		<div v-if="user.email">
 			<AppDropdown class="hidden md:block" menu="top-14">
 				<span class="text-lg h-full px-4">
-					{{ displayName }}
+					{{ user.email }}
 				</span>
 
 				<template #menu>
@@ -32,10 +26,10 @@ const displayName = computed(() => {
 				</template>
 			</AppDropdown>
 
-			<NuxtLink class="block md:hidden overflow-x-hidden max-w-24" to="/account">
-				<span class="w-full text-sm truncate">
-					{{ displayName }}
-				</span>
+			<NuxtLink class="block md:hidden" to="/account">
+				<IconTablerUser
+					class="w-6 h-6 text-dark-100"
+				/>
 			</NuxtLink>
 		</div>
 
