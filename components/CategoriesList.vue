@@ -3,6 +3,7 @@ import { CategoriesResponse } from '~~/interfaces';
 import { categoriesQuery } from '~~/queries';
 
 const route = useRoute()
+const router = useRouter()
 const client = useStrapiClient()
 
 const { data: categories } = await useAsyncData(
@@ -19,6 +20,8 @@ const subcategoriesMenu = reactive({
 	list: []
 })
 
+watch(() => route.path, () => subcategoriesMenu.show = false)
+
 const isActive = (param: string) => param === route.params.category ? true : false
 
 function getSubcategories(subcategories: object[], category: string) {
@@ -27,6 +30,15 @@ function getSubcategories(subcategories: object[], category: string) {
 		subcategoriesMenu.list = subcategories
 		subcategoriesMenu.show = true
 	} else subcategoriesMenu.show = false
+}
+
+function showMenuOnMobile(to: string, subcategories: object[]) {
+	if (!subcategories.length) router.push(`/${to}`)
+
+	else {
+		if (subcategoriesMenu.show) router.push(`/${to}`)
+		else getSubcategories(subcategories, to)
+	}
 }
 </script>
 
@@ -43,15 +55,23 @@ function getSubcategories(subcategories: object[], category: string) {
 				:key="category.id"
 				class="relative group h-full cursor-pointer decorator"
 				:class="{ 'after:(!w-full)': isActive(category.attributes.slug) }"
-				@mouseenter="getSubcategories(category.attributes.subcategories.data, category.attributes.slug)"
 			>
 				<nuxt-link
 					:to="`/${category.attributes.slug}`"
-					class="text-sm lg:text-xl font-medium text-dark-100 h-full flex items-center"
+					class="hidden lg:(flex items-center font-medium text-xl text-dark-100 h-full)"
 					:class="{ 'text-dark-400': isActive(category.attributes.slug) }"
+					@mouseenter="getSubcategories(category.attributes.subcategories.data, category.attributes.slug)"
 				>
 					{{ category.attributes.name }}
 				</nuxt-link>
+
+				<div
+					class="flex items-center text-sm text-dark-100 font-medium h-full lg:hidden"
+					:class="{ 'text-dark-400': isActive(category.attributes.slug) }"
+					@click="showMenuOnMobile(category.attributes.slug, category.attributes.subcategories.data)"
+				>
+					{{ category.attributes.name }}
+				</div>
 			</li>
 		</ul>
 
@@ -61,7 +81,7 @@ function getSubcategories(subcategories: object[], category: string) {
 		>
 			<ul
 				v-if="subcategoriesMenu.show"
-				class="flex flex-col flex-wrap gap-x-16 content-start justify-between  absolute top-21 h-40 bg-white border-2 border-t-0 border-gray-600 z-50 transform -translate-x-1/2 left-1/2 w-[calc(100%+160px)] py-6 px-8"
+				class="flex flex-col flex-wrap gap-x-16 content-start justify-between absolute top-8.5 w-[calc(100%+32px)] border-x-0 border-b-2 lg:(top-21 w-[calc(100%+160px)] border-2 border-t-0) h-40 bg-white border-gray-600 z-50 transform -translate-x-1/2 left-1/2 py-6 px-8"
 				@mouseleave="subcategoriesMenu.show = false"
 			>
 				<li 
