@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { marked } from 'marked';
-import { productAttirbutes, smiles } from '~~/content';
+import { productAttirbutes } from '~~/content';
 import { ProductResponse } from '~~/interfaces';
 import type { Variant } from '~/types/product';
 
@@ -54,7 +54,9 @@ function selectVariant(variant: Variant) {
 				<div v-html="marked(brief)" />
 
 				<div class="flex items-center justify-between font-medium text-dark-100">
-					<span class="text-lg lg:text-3xl text-orange-400">{{ cartProduct.price }} грн</span>
+					<span class="text-2xl lg:text-3xl text-orange-400">
+						{{ cartProduct.price }} грн
+					</span>
 				</div>
 			</div>
 
@@ -98,7 +100,7 @@ function selectVariant(variant: Variant) {
 					class="border-t-2 lg:(border-r-2) border-gray-600 py-5 px-4"
 				>
 					<template #trigger>
-						<h2 class="text-2xl font-semibold text-dark-400 text-left">
+						<h2 class="text-xl lg:text-2xl font-semibold text-dark-400 text-left">
 							{{ productAttirbutes[i] }}
 						</h2>
 					</template>
@@ -128,20 +130,6 @@ function selectVariant(variant: Variant) {
 					</template>
 				</AppAccordion>
 			</section>
-
-			<div class="grid grid-cols-3 border-y-2 border-gray-600 h-max pt-0">
-				<div
-					v-for="smile in smiles"
-					:key="smile.title"
-					class="flex flex-col items-center space-y-1 border-r-2 border-gray-600 py-4"
-				>
-					<img :src="smile.image" />
-
-					<span>
-						{{ smile.title }}
-					</span>
-				</div>
-			</div>
 		</section>
 
 		<section class="w-full order-first md:(order-last overflow-y-auto h-full)">

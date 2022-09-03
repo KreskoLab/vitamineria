@@ -27,7 +27,7 @@ const login = useLogin()
 			</AppDropdown>
 
 			<NuxtLink class="block md:hidden" to="/account">
-				<IconTablerUser
+				<IconTablerUserCheck
 					class="w-6 h-6 text-dark-100"
 				/>
 			</NuxtLink>
