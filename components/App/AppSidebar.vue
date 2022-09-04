@@ -18,7 +18,7 @@ defineExpose({
 
 <template>
 	<Teleport to="body">
-		<div class="fixed top-20 lg:top-22 left-0 h-full w-full bg-dark-600/30 z-50 h-full">
+		<div class="fixed top-30 lg:top-32 left-0 h-full w-full bg-dark-600/30 z-50 h-full">
 			<Transition
 				enter-active-class="animate-animated animate-faster animate-fadeInRight"
 				leave-active-class="animate-animated animate-faster animate-fadeOutRight"
