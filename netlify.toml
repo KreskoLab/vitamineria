@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "https://admin.vitamineria.com.ua/sitemap/index.xml"
-  status = 301
-  force = true
