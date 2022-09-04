@@ -31,7 +31,7 @@ const tab = ref<string>(tabs[0].value)
 		ref="sidebar"
 		@close="$emit('close')"
 	>
-		<div class="flex flex-col h-[calc(100%-5.5rem)]">
+		<div class="flex flex-col h-[calc(100%-7.5rem)] lg:h-[calc(100%-8rem)]">
 			<section class="flex items-center space-x-4 border-b-2 border-gray-600 px-4 h-18 w-full">
 				<button 
 					class="appearance-none w-6 h-6" 

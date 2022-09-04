@@ -27,7 +27,7 @@ defineExpose({
 			>
 				<aside 
 					v-if="show"
-					class="fixed top-20 right-0 border-gray-600 bg-light-50 h-full w-full lg:(top-22 w-126 border-l-2)">
+					class="fixed top-30 right-0 border-gray-600 bg-light-50 h-full w-full lg:(top-32 w-126 border-l-2)">
 					<slot />
 				</aside>
 			</Transition>
