@@ -139,10 +139,13 @@ function selectVariant(variant: Variant) {
 					:key="image.id" 
 					class="lg:(border-b-2 border-r-2 border-gray-600) bg-[#F0F4F5] snap-start w-full flex-shrink-0 p-10"
 				>
-					<img 
-						class="max-w-full object-contain h-full" 
-						:src="image.attributes.url"
-					>
+					<NuxtImg 
+						:src="image.attributes.hash + image.attributes.ext"
+						:width="image.attributes.width"
+						:height="image.attributes.height"
+						provider="cloudinary"
+						format="webp"
+					/>
 				</li>
 			</ul>
 		</section>
