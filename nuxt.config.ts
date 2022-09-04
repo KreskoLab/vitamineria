@@ -20,6 +20,7 @@ export default defineNuxtConfig({
 
 	app: {
 		head: {
+			titleTemplate: '%s - Вітамінерія',
 			htmlAttrs: {
 				lang: 'uk'
 			},

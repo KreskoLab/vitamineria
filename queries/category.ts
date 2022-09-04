@@ -15,10 +15,13 @@ export const categoryQuery = (param: string) => qs.stringify({
 				},
 				cover: {
 					fields: ['formats'],
-				}
+				},
 			},
 			fields: ['name', 'slug', 'in_stock']
 		},
+		seo: {
+			fields: '*'
+		}
 	},
 }, {
 	encodeValuesOnly: true,
