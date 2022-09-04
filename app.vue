@@ -7,21 +7,23 @@ await Promise.all([fetchCartProducts(), useFetchUser()])
 
 <template>
 	<div class="min-h-screen bg-stone-100 min-w-[350px]">
-		<TheHeader />
+		<the-footer />
 
-		<TheCart 
+		<the-header />
+
+		<the-cart 
 			v-if="cart" 
 			@close="cart = false" 
 		/>
 
-		<LoginModal
+		<login-modal
 			v-if="login"
 			@close="login = false"
 		/>
 
 		<NuxtLoadingIndicator />
 
-		<main class="container mx-auto max-w-screen-2xl overflow-x-hidden pt-20 lg:pt-22">
+		<main class="container mx-auto max-w-screen-2xl overflow-x-hidden pt-30 lg:pt-32">
 			<NuxtPage />
 		</main>
 	</div>

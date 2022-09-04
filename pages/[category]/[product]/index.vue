@@ -37,7 +37,7 @@ function selectVariant(variant: Variant) {
 </script>
 
 <template>
-	<article class="flex flex-col h-[calc(100vh-5rem)] top-20 z-10 md:(fixed flex-row h-[calc(100vh-5.5rem)] top-22) bg-[#FCF7F1]">
+	<article class="flex flex-col h-[calc(100vh-7.5rem)] top-30 z-10 md:(fixed flex-row h-[calc(100vh-8rem)] top-32) bg-[#FCF7F1]">
 		<section class="relative flex flex-col h-full order-last md:(order-first min-w-156 max-w-156 overflow-y-auto)">
 			<div class="flex flex-col space-y-4 py-5 px-4 border-t-2 lg:(border-r-2 border-t-0) border-gray-600">
 				<div class="flex items-start justify-between">

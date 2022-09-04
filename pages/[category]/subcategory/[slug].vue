@@ -34,7 +34,7 @@ useHead({
 	
 <template>
 	<div 
-		class="flex flex-col w-full h-[calc(100vh-5rem)] lg:(h-[calc(100vh-5.5rem)]) overflow-y-auto"
+		class="flex flex-col w-full h-[calc(100vh-7.5rem)] lg:(h-[calc(100vh-8rem)]) overflow-y-auto"
 	>
 		<section class="flex flex-col space-y-1 pt-5 lg:(space-y-3 px-12 pt-6)">
 			<h1 class="text-center text-4xl lg:(text-6xl font-normal) font-medium text-dark-200 uppercase tracking-widest">
