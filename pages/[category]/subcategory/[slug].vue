@@ -19,6 +19,16 @@ const { data: category } = await useAsyncData(
 	
 useHead({
 	title: category.value.data[0].attributes.name,
+	meta: [
+		{
+			name: 'description',
+			content: category.value.data[0].attributes.seo[0].description
+		},
+		{
+			name: 'keywords',
+			content: category.value.data[0].attributes.seo[0].keywords
+		}
+	]
 })
 </script>
 	
