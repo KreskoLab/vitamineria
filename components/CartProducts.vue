@@ -39,7 +39,15 @@ async function removeProduct(id: number, weight: string) {
 					class="flex space-x-4"
 				>
 					<div class="flex items-center justify-center min-h-24 min-w-24 bg-stone-100 p-2">
-						<img class="w-22 h-26" :src="product.images.data[0].attributes.formats.small.url">
+						<nuxt-img 
+							:src="product.cover.data.attributes.formats.small.hash + product.cover.data.attributes.formats.small.ext"
+							width="256"
+							height="256"
+							format="webp"
+							provider="cloudinary"
+							loading="lazy"
+							class="w-22 h-26"
+						/>
 					</div>
 
 					<div class="flex flex-col justify-between">

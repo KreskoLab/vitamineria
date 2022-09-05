@@ -71,7 +71,7 @@ export const fetchCartProducts = async () => {
 	const query = stringify({
 		fields: ['name', 'slug'],
 		populate: {
-			images: {
+			cover: {
 				fields: ['formats'],
 			},
 			prices: {
