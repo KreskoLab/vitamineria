@@ -41,7 +41,9 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 			v-if="!inStock"
 			class="absolute -right-3 top-2 sm:(top-5 right-0 w-42) transform rotate-20 bg-red-400 py-1 px-3"
 		>
-			<p class="font-medium text-center">нема в наявності</p>
+			<p class="text-sm lg:text-base font-medium text-center">
+				закінчилась
+			</p>
 		</div>
 	</article>
 </template>

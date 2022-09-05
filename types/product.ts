@@ -4,7 +4,10 @@ export type Image = {
 	size: number
 	updatedAt: string
 	url: string
-	width: number,
+	width: number
+	height: number
+	hash: string
+	ext: string
 	formats: {
 		small: {
 			hash: string
@@ -33,7 +36,7 @@ export type Product = {
 	count?: number
 	in_stock: boolean
 	energy: {
-		title: string,
+		title: string
 		value: string
 	}[]
 	prices: {
