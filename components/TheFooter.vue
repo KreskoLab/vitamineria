@@ -2,7 +2,7 @@
 	<footer class="flex items-center justify-between fixed top-0 bg-blue-gray-100 z-100 w-full h-10 px-4 text-xs lg:(px-12 text-sm)">
 		<div>
 			<icon-tabler-phone />
-			<span>+380 63 24 53 347</span>
+			<span>+380 63 23 19 567</span>
 		</div>
   
 		<div>

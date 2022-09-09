@@ -4,7 +4,8 @@ export const categoriesQuery = qs.stringify({
 	fields: ['name', 'slug'],
 	populate: {
 		subcategories: {
-			fields: ['name', 'slug']
+			fields: ['name', 'slug', 'priority'],
+			sort: ['priority:desc']
 		}
 	}
 }, {
