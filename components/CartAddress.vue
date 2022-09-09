@@ -71,6 +71,10 @@ const paymentMethods = [
 	{
 		name: "Готівка",
 		value: 'cash'
+	},
+	{
+		name: "За реквізитами",
+		value: 'card'
 	}
 ]
 
