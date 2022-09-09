@@ -35,6 +35,7 @@ export type Product = {
 	price: number
 	count?: number
 	in_stock: boolean
+	message: string
 	energy: {
 		title: string
 		value: string

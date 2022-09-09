@@ -54,7 +54,7 @@ useHead({
 				:category="param"
 				:name="product.attributes.name" 
 				:slug="product.attributes.slug"
-				:in-stock="product.attributes.in_stock"
+				:message="product.attributes.message"
 				:price="product.attributes.prices[0].variants[0].price" 
 				:image="product.attributes.cover.data.attributes.formats.small.hash + product.attributes.cover.data.attributes.formats.small.ext"
 				:height="product.attributes.cover.data.attributes.formats.small.height"

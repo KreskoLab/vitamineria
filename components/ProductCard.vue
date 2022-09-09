@@ -4,7 +4,7 @@ const props = defineProps<{
 	slug: string,
 	category: string,
 	price: number,
-	inStock: boolean
+	message: string
 	image?: string,
 	height?: number,
 	width?: number,
@@ -38,11 +38,11 @@ const decimalPrice = computed(() => props.price.toFixed(2))
 		</NuxtLink>
 
 		<div 
-			v-if="!inStock"
+			v-if="message.length"
 			class="absolute -right-3 top-2 sm:(top-5 right-0 w-42) transform rotate-20 bg-red-400 py-1 px-3"
 		>
 			<p class="text-sm lg:text-base font-medium text-center">
-				закінчилась
+				{{ message }}
 			</p>
 		</div>
 	</article>

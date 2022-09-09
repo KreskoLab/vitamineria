@@ -17,7 +17,7 @@ export const subcategoryQuery = (param: string) => qs.stringify({
 					fields: '*'
 				}
 			},
-			fields: ['name', 'slug', 'in_stock']
+			fields: ['name', 'slug', 'message']
 		},
 		seo: {
 			fields: '*'

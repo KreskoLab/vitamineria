@@ -17,7 +17,7 @@ export const categoryQuery = (param: string) => qs.stringify({
 					fields: ['formats'],
 				},
 			},
-			fields: ['name', 'slug', 'in_stock']
+			fields: ['name', 'slug', 'message']
 		},
 		seo: {
 			fields: '*'
