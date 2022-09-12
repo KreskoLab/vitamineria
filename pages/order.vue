@@ -6,19 +6,21 @@ const orderId = route.query['id']
 
 let res = ref<'success' | 'error' | 'pending'>('error');
 
-try {
-	res.value = await client<'success' | 'error' | 'pending'>(`/me/order?id=${orderId}`, { method: 'GET' })
-} catch (error) {
-	console.log(error);
-}
+onMounted(async () => {
+	try {
+		res.value = await client<'success' | 'error' | 'pending'>(`/me/order?id=${orderId}`, { method: 'GET' })
+	} catch (error) {
+		console.log(error);
+	}
 
-if (res.value === 'success' || res.value === 'pending') {
-	await clearCart()
-} else {
-	await new Promise((resolve) => {
-		setTimeout(() => resolve(navigateTo('/pastila')), 5000)
-	})
-}
+	if (res.value === 'success' || res.value === 'pending') {
+		await clearCart()
+	} else {
+		await new Promise((resolve) => {
+			setTimeout(() => resolve(navigateTo('/pastila')), 5000)
+		})
+	}
+})
 </script>
 
 <template>
